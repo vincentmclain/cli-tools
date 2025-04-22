@@ -1,10 +1,8 @@
+. $PSScriptRoot\functions.ps1
+
 #region Configuration
 # Use the same logic as note.ps1 to determine the Notes Directory
-$NotesDirectory = if ($Env:NOTES_DIRECTORY) {
-    $Env:NOTES_DIRECTORY
-} else {
-    Join-Path -Path ([Environment]::GetFolderPath("MyDocuments")) -ChildPath "Notes"
-}
+$NotesDirectory = Get-NotesDirectory
 
 $TodoFilePath = Join-Path -Path $NotesDirectory -ChildPath "todo.txt"
 $DoneFilePath = Join-Path -Path $NotesDirectory -ChildPath "done.txt"
